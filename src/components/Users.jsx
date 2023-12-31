@@ -1,10 +1,14 @@
+import { useEffect } from "react";
 
 function Users() {
-  return (
-    <div>
-    <h1>users</h1>
-    </div>
-  );
+    useEffect(() => { 
+        console.log("Mounted");
+    },[])
+    return (
+        <div>
+            <h1>users</h1>
+        </div>
+    );
 }
 
 export default Users;
