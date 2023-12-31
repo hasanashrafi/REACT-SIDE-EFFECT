@@ -18,15 +18,16 @@ function Users() {
                 console.log(json);
 
             } catch (error) {
-                console.log(error);
-                setError(true)
+                if (error.name !== "AbortError") {
+                    setError(true)
+                }
             }
         };
         // console.log("Use effect runs");
         fetchUsers();
         return () => {
             controller.abort()
-         }
+        }
     }, [id])
 
     // const searchHandler = async () => {
