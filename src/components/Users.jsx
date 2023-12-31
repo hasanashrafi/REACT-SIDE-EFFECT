@@ -1,12 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function Users() {
-    useEffect(() => { 
-        console.log("Mounted");
-    },[])
+    const [users, setUsers] = useState([])
+    useEffect(() => {
+        fetch("https://jsonplaceholder.typicode.com/users")
+            .then((res) => res.json())
+            .then((json) => setUsers(json))
+    }, [])
     return (
         <div>
-            <h1>users</h1>
+            <ul>{users.map((user) => <li key={user.id}>{user.name}</li>)}</ul>
         </div>
     );
 }
